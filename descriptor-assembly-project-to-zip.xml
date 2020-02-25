@@ -1,0 +1,39 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.3 http://maven.apache.org/xsd/assembly-1.1.3.xsd">
+    <id>src</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <moduleSets>
+        <moduleSet>
+            <includes>
+                <include>springular-framework-persistence</include>
+                <include>springular-framework-service</include>
+                <include>springular-framework-web</include>
+                <include>springular-framework-common</include>
+            </includes>
+            <sources>
+                <fileSets>
+                    <fileSet>
+                        <excludes>
+                            <exclude>target/**</exclude>
+                            <exclude>.settings/**</exclude>
+                            <exclude>.*</exclude>
+                        </excludes>
+                    </fileSet>
+                </fileSets>
+            </sources>
+        </moduleSet>
+    </moduleSets>
+    <fileSets>
+        <fileSet>
+            <includes>
+                <include>descriptor-assembly-project-to-zip.xml</include>
+                <include>descriptor-assembly-infrastructure-to-zip.xml</include>
+                <include>pom.xml</include>
+                <include>ReadMe.md</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>

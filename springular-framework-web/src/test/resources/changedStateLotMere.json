@@ -1,0 +1,21 @@
+{"numLotMere": "test123",
+  "date": "16/12/2019",
+  "rawMaterialType": "CONVENTIONAL",
+  "analyses": [
+    {
+      "fruity": 3.0,
+      "pungent": 4.0,
+      "bitter": 2.0,
+      "date": "16/12/2019",
+      "laboratoryAnalysis": {
+        "id": {
+          "laboratory": {
+            "address": "address",
+            "name": "name"
+          }
+        }
+      },
+      "reference": "AnalysisRef.*/-."
+    }
+  ]
+}

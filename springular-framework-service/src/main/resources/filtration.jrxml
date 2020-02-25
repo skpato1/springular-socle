@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="filtration" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="66f35eb6-1ddd-4b41-98eb-1be3930c8d61">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<parameter name="site" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="checkedConventinnel" class="java.lang.String"/>
+	<parameter name="checkedBiological" class="java.lang.String"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="compilant" class="java.lang.String"/>
+	<parameter name="filtrationId" class="java.lang.String"/>
+	<parameter name="nonCompilant" class="java.lang.String"/>
+	<parameter name="lotMereAttribute" class="java.lang.String"/>
+	<parameter name="remark" class="java.lang.String"/>
+	<parameter name="acidity" class="java.lang.Float"/>
+	<parameter name="k232" class="java.lang.Float"/>
+	<parameter name="result" class="java.lang.String"/>
+	<parameter name="fruity" class="java.lang.Float"/>
+	<parameter name="pungent" class="java.lang.Float"/>
+	<parameter name="bitter" class="java.lang.Float"/>
+	<parameter name="quantity" class="java.lang.Double"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<variable name="Variable_1" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="111" splitType="Stretch">
+			<frame>
+				<reportElement x="-7" y="2" width="564" height="108" uuid="cb353aec-add7-4f72-a827-81ac178e4398"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement x="120" y="1" width="310" height="107" uuid="ad981743-b8fc-4acd-8f85-eeff26ed137c"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="16" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+					</textElement>
+					<text><![CDATA[Fiche de Contrôle post filtration 
+]]></text>
+				</staticText>
+				<image hAlign="Center" vAlign="Middle">
+					<reportElement x="0" y="33" width="120" height="41" uuid="1da508a3-51d1-4266-b40d-7c435ebff3db"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.25" lineStyle="Solid"/>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement x="430" y="54" width="133" height="27" uuid="fc3fa00c-9623-4f06-8463-70f70b0b343a"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Révision : 02]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="430" y="1" width="134" height="28" uuid="49b678ca-c54f-4222-b4b4-3f074a50e7bd"/>
+					<box>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Référence: ENR‐BLC‐07]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="430" y="27" width="133" height="27" uuid="69bfa289-3325-457d-ba49-b4cd370a3432"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Date : 07/12/2019]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="431" y="81" width="70" height="27" uuid="209d73e5-337b-4772-9e24-1e2fe99949d7"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report">
+					<reportElement x="501" y="81" width="55" height="27" uuid="4ca96291-566f-4832-8b5c-a7fb194c57b6"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" sur " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="38" splitType="Stretch">
+			<textField>
+				<reportElement x="350" y="18" width="204" height="17" uuid="7c0df0da-4b2c-4218-8674-937ed27445d3"/>
+				<textElement textAlignment="Right">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{filtrationId}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="640" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="480" y="508" width="63" height="20" uuid="bf9520fc-bfc6-4529-9616-51e8ac61d026"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Signature :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-4" y="20" width="29" height="22" uuid="da3975fc-8ceb-40a1-833b-b84525b03eb6"/>
+				<text><![CDATA[Site :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="28" y="20" width="360" height="22" uuid="7c2e69c1-ad50-4bad-9c85-3d8ff9c9072e"/>
+				<textFieldExpression><![CDATA[$P{site}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="-2" y="78" width="368" height="14" uuid="6c6e5525-53ff-4dd4-9581-2c3b15a318b2"/>
+				<text><![CDATA[Type de l'huile :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="23" y="98" width="284" height="16" uuid="68f91137-401a-4487-8e7a-0d4531db179d"/>
+				<text><![CDATA[- Huile d'Olive Vierge Extra Conventionnelle]]></text>
+			</staticText>
+			<image>
+				<reportElement positionType="Float" x="231" y="100" width="21" height="13" uuid="54c9d7d1-ea82-466c-9abc-4a326ce6de01"/>
+				<imageExpression><![CDATA[$P{checkedConventinnel}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" x="23" y="115" width="234" height="13" uuid="296e9cec-a1d6-4433-b930-6532c8bb3a63"/>
+				<text><![CDATA[- Huile d'Olive Vierge Extra Biologique]]></text>
+			</staticText>
+			<image>
+				<reportElement positionType="Float" x="231" y="115" width="21" height="13" uuid="0b773f61-11c5-4b86-80cc-3c298a689050"/>
+				<imageExpression><![CDATA[$P{checkedBiological}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="-4" y="0" width="29" height="19" uuid="60493688-8355-4d7f-a84c-635611dd3f23"/>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="25" y="0" width="66" height="20" uuid="1598a95f-fee3-46f0-bf9c-329e420fe25a"/>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-4" y="42" width="78" height="18" uuid="8ff6e515-b3cd-4819-a5d3-d0d173e8703b"/>
+				<text><![CDATA[Numéro de lot :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="78" y="41" width="360" height="19" uuid="9a1b3bb5-69c3-4152-a7da-1b3b24b763e3"/>
+				<textFieldExpression><![CDATA[$P{lotMereAttribute}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="-10" y="618" width="560" height="20" forecolor="#FA0C07" uuid="5f645d61-246b-4aa3-b91f-7cd8a2bf469a"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{remark}]]></textFieldExpression>
+			</textField>
+			<frame>
+				<reportElement x="-7" y="153" width="564" height="220" uuid="30112cc5-754c-46e9-b437-52d0c44d1263"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement x="0" y="0" width="210" height="30" uuid="6545ed56-9b83-4506-a21f-019ca8899cbc"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[ANALYSIS]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="210" y="0" width="170" height="30" uuid="9c4d83f4-ae01-4e89-a529-d8b873240013"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[METHOD]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="380" y="0" width="184" height="30" uuid="7bafddf1-df4f-48ec-b9cd-6313bea4b10c"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[VALUE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="31" width="210" height="29" uuid="d822ff21-d383-4d85-9c78-940b93b40c91"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="10" isBold="false" isUnderline="false"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[*ACIDITY EXPRESSED IN OLEIC ACID (%)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="61" width="210" height="29" uuid="9b7897c3-80b2-4f12-bc14-11a4c8b1a82b"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="10" isBold="false" isUnderline="false"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[*SPECTROPHOTOMETRY K 232 ISO 3656]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="91" width="210" height="39" uuid="2a67167d-4443-4c0d-adc5-b95bfde3d313"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="10" isBold="false" isUnderline="false"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[* Organoleptic Analysis
+   Median :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="131" width="210" height="29" uuid="202cbbb8-5f6e-4eab-b56c-a4aeec8bc888"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="10" isBold="false" isUnderline="false"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[FRUITY]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="161" width="210" height="29" uuid="87f18c09-b5d9-466a-987f-4bbd2159da07"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="10" isBold="false" isUnderline="false"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Pungent]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="191" width="210" height="29" uuid="a6289a20-8d0a-4900-ac2b-93640f411e54"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="10" isBold="false" isUnderline="false"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Bitter]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="210" y="31" width="170" height="29" uuid="49889345-1812-47e3-a9a9-32d2fd60ac21"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[COI/T.20/Doc.n°34]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="210" y="61" width="170" height="29" uuid="ad98f34f-25aa-4e5e-bf78-923c500e9099"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[ISO 3656]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="210" y="91" width="170" height="129" uuid="a91fa011-71ea-436a-8727-580260df307a"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false" isUnderline="false"/>
+					</textElement>
+					<text><![CDATA[COI/T.20/Doc.n°15-2018]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="381" y="31" width="183" height="29" uuid="69b544ed-45cd-4d20-89ff-31c88f6a28f5"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$P{acidity}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="381" y="61" width="183" height="29" uuid="93e84b05-fccb-4463-a52d-fe016b43b2f5"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$P{k232}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="381" y="90" width="183" height="41" uuid="66653742-0c8b-4ae5-8692-d1a3d29c1e2a"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$P{result}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="381" y="131" width="183" height="29" uuid="b67a170b-c017-4e16-838e-fb6701c0b30e"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$P{fruity}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="381" y="161" width="183" height="29" uuid="98a68125-a93c-4544-8bf7-45152c79efe8"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$P{pungent}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="381" y="191" width="183" height="29" uuid="3d825743-43cb-4a83-87e6-ca520ea2026b"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$P{bitter}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<staticText>
+				<reportElement positionType="Float" x="-2" y="395" width="368" height="14" uuid="e728cb87-e9df-4de9-b35a-d28d1d4e7490"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Conclusion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="14" y="415" width="284" height="16" uuid="46f33225-1e74-4453-aa73-bbddc3edf677"/>
+				<text><![CDATA[Lot Conforme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="14" y="432" width="234" height="13" uuid="dd168a1d-2dc7-4a9d-9af6-9b4c54a987d2"/>
+				<text><![CDATA[Lot non conforme]]></text>
+			</staticText>
+			<image>
+				<reportElement positionType="Float" x="135" y="432" width="21" height="13" uuid="dd03c924-c98f-4d0f-9e3c-2092be3baeb3"/>
+				<imageExpression><![CDATA[$P{nonCompilant}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement positionType="Float" x="135" y="417" width="21" height="13" uuid="a6e38d27-a42f-4815-8f6b-7db52015438a"/>
+				<imageExpression><![CDATA[$P{compilant}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="-4" y="60" width="174" height="18" uuid="dc4a123b-63cc-4cc3-a0ba-1ed193eb0203"/>
+				<text><![CDATA[Quantité Huile Filtrée (en tonnes):]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="170" y="61" width="160" height="16" uuid="bc09f5dd-ec8f-4cce-a6b7-bb82038119d3"/>
+				<textFieldExpression><![CDATA[$P{quantity}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+</jasperReport>

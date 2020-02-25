@@ -1,0 +1,10 @@
+{
+	"genericTrackDtos": [
+		{
+			"eventTypeDescription": "SAVE",
+			"performedBy": "admin admin",
+			"changedProperties": null,
+			"previousState": null
+		}
+	]
+}

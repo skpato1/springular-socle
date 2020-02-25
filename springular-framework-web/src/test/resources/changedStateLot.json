@@ -1,0 +1,27 @@
+{"quantity": 1200.5,
+  "provider": {
+    "name": "name",
+    "identity": "identity"
+  },
+  "numLot": "888",
+  "oils": [
+    {
+      "startTrituration": "16/12/2019",
+      "endTrituration": "16/12/2019",
+      "olives": [
+        {
+          "startHarvest": "16/12/2019",
+          "endHarvest": "16/12/2019",
+          "variety": {
+            "name": "Chemlali"
+          }
+        }
+      ],
+      "mill": {
+        "name": "test",
+        "adress": "test",
+        "partyRoleCode": {}
+      }
+    }
+  ]
+}
