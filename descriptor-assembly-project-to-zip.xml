@@ -8,10 +8,10 @@
     <moduleSets>
         <moduleSet>
             <includes>
-                <include>springular-framework-persistence</include>
-                <include>springular-framework-service</include>
-                <include>springular-framework-web</include>
-                <include>springular-framework-common</include>
+                <include>sifast-spring-persistance</include>
+                <include>sifast-spring-service</include>
+                <include>sifast-spring-web</include>
+                <include>sifast-spring-common</include>
             </includes>
             <sources>
                 <fileSets>

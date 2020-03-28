@@ -15,13 +15,6 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<!-- sonar properties -->
-		<sonar.java.binaries>${main.basedir}/springular-framework-web/target</sonar.java.binaries>
-		<sonar.exclusions>**/src/main/webapp/resources/js/lib/*.js,
-			**/src/main/webapp/resources/css/lib/*.js</sonar.exclusions>
-		<sonar.coverage.exclusions>**/src/main/webapp/resources/js/lib/*.js,
-			**/src/main/webapp/resources/css/lib/*.js</sonar.coverage.exclusions>
-		<sonar.dependencyCheck.reportPath>target/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
 		<owasp.check.skip>true</owasp.check.skip>
 		<main.basedir>${project.basedir}</main.basedir>
 		<skipTests>true</skipTests>
@@ -29,9 +22,9 @@
 
 	<!-- Archivage repo Nexus -SiFAST- -->
 	<scm>
-		<url>http://git.intranet.sifast.com/sifast-project/springular-framework-back.git</url>
-		<connection>scm:git:http://git.sifast.com/sifast-project/springular-framework-back.git</connection>
-		<developerConnection>scm:git:http://git.sifast.com/sifast-project/springular-framework-back.git</developerConnection>
+		<url>http://git.sifast.com/sifast-project/springular-framework-socle.git</url>
+		<connection>scm:git:http://git.sifast.com/sifast-project/springular-framework-socle.git</connection>
+		<developerConnection>scm:git:http://git.sifast.com/sifast-project/springular-framework-socle.git</developerConnection>
 		<tag>springular-framework-0.0.11</tag>
 	</scm>
 
@@ -290,9 +283,9 @@
 	</build>
 
 	<modules>
-		<module>springular-framework-persistence</module>
-		<module>springular-framework-service</module>
-		<module>springular-framework-web</module>
-		<module>springular-framework-common</module>
+		<module>sifast-spring-persistence</module>
+		<module>sifast-spring-service</module>
+		<module>sifast-spring-web</module>
+		<module>sifast-spring-common</module>
 	</modules>
 </project>
