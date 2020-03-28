@@ -11,7 +11,7 @@ Avant de pouvoir déployer cette application sur votre machine vous devez avoir 
 ### Packaging en jar
  Pour pouvoir lancer le projet suivez les étapes suivantes :
  1. Sous votre serveur MySQL créez une base de données nommée : **db_springular**
- 2. modifiez le fichier **[application.properties](http://git.intranet.sifast.com/sifast-project/springular-framework/blob/master/springular-framework-web/src/main/resources/application.properties)** convenablement en saisissant votre utilisateur et mot de passe.
+ 2. modifiez le fichier **[application.properties](http://git.intranet.sifast.com/sifast-project/springular-framework/blob/master/sifast-spring-web/src/main/resources/application.properties)** convenablement en saisissant votre utilisateur et mot de passe.
  3. Dans un terminal dans la racine du projet lancez la commande suivante:
 
 	> mvnw spring-boot:run
