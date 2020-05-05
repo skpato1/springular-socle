@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -193,6 +194,13 @@ public class GenericService<T, P extends Serializable> implements IGenericServic
         List<T> returnedList;
         returnedList = genericDao.findByIdIn(ids);
         return returnedList;
+    }
+
+    @Override
+    public Set<T> findByIdIn(Set<Long> set) {
+        Set<T> returnedSet;
+        returnedSet = genericDao.findByIdIn(set);
+        return returnedSet;
     }
 
 }

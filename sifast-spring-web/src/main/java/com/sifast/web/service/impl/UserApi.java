@@ -39,7 +39,7 @@ import com.sifast.dto.user.UserDto;
 import com.sifast.dto.user.UserInfoDto;
 import com.sifast.dto.user.UserPasswordDto;
 import com.sifast.dto.user.ViewUserDto;
-import com.sifast.exception.ChoException;
+import com.sifast.exception.CustomException;
 import com.sifast.model.Role;
 import com.sifast.model.User;
 import com.sifast.service.IRoleService;
@@ -90,7 +90,7 @@ public class UserApi implements IUserApi {
             User savedUser = userService.save(userMapper.mapCreateUser(userDto));
             httpStatus = HttpStatus.OK;
             httpResponseBody = modelMapper.map(savedUser, ViewUserDto.class);
-        } catch (ChoException e) {
+        } catch (CustomException e) {
             httpResponseBody = new HttpErrorResponse(HttpCostumCode.BAD_REQUEST.getValue(), e.getMessage());
             httpStatus = HttpStatus.BAD_REQUEST;
         }
