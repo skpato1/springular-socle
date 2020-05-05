@@ -3,6 +3,7 @@ package com.sifast.service;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import javax.transaction.Transactional;
 
@@ -31,6 +32,8 @@ public interface IGenericService<T, P extends Serializable> {
     Optional<T> findById(P id);
 
     List<T> findByIdIn(Iterable<Integer> ids);
+
+    Set<T> findByIdIn(Set<Long> set);
 
     T getOne(P id);
 

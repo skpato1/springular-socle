@@ -10,7 +10,7 @@ public class Constants {
 
     public static final String PDF_EXTENSION = ".pdf";
 
-    public static final String DEFAULT_AUTHORITY = "AUTH_VIEW_LANDING_PAGE";
+    public static final String DEFAULT_AUTHORITY = "DEFAULT_AUTH";
 
     public static final String DATE_WITH_DASH = "yyyy-MM-dd";
 
