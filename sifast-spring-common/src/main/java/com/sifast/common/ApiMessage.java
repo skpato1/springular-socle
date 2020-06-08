@@ -55,6 +55,8 @@ public class ApiMessage {
     public static final String WRONG_OLD_PASSWORD = "WRONG_OLD_PASSWORD";
 
     public static final String PASSWORDS_ARE_NOT_MATCHING = "PASSWORDS_ARE_NOT_MATCHING";
+    
+    public static final String ERROR_LEVEL_MESSAGE = "ERROR_LEVEL_MESSAGE";
 
     private ApiMessage() {
         super();

@@ -4,7 +4,6 @@ import java.util.Optional;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sifast.enumeration.LogicalDeleteEnum;
 import com.sifast.model.User;
 
 @Transactional

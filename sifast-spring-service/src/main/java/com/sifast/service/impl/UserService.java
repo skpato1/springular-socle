@@ -12,7 +12,6 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.stereotype.Service;
 
 import com.sifast.dao.IUserDao;
-import com.sifast.enumeration.LogicalDeleteEnum;
 import com.sifast.model.User;
 import com.sifast.service.IUserService;
 

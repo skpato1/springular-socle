@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.javers.core.metamodel.annotation.DiffIgnore;
 import org.javers.core.metamodel.annotation.TypeName;
 
 import com.sifast.utils.TrackIdentifier;
@@ -46,6 +47,7 @@ public class User extends TimestampEntity implements TrackIdentifier {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    @DiffIgnore
     private Set<Role> roles = new HashSet<>();
 
     @Column(name = "is_deleted")
