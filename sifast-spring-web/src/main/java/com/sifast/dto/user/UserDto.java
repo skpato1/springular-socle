@@ -29,7 +29,6 @@ public class UserDto {
 
     private Set<Integer> rolesId;
 
-    private Set<Integer> sitesId;
 
     public String getFirstName() {
         return firstName;
@@ -63,13 +62,6 @@ public class UserDto {
         this.rolesId = rolesId;
     }
 
-    public Set<Integer> getSitesId() {
-        return sitesId;
-    }
-
-    public void setSitesId(Set<Integer> sitesId) {
-        this.sitesId = sitesId;
-    }
 
     @Override
     public String toString() {

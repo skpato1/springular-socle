@@ -17,72 +17,68 @@ import org.springframework.lang.Nullable;
 @Transactional
 public interface IGenericService<T, P extends Serializable> {
 
-    void deleteById(P id);
+	void deleteById(P id);
 
-    void delete(T entity);
+	void delete(T entity);
 
-    void deleteAll(Iterable<? extends T> entities);
+	void deleteAll(Iterable<? extends T> entities);
 
-    void deleteInBatch(Iterable<T> entities);
+	void deleteInBatch(Iterable<T> entities);
 
-    void deleteAll();
+	void deleteAll();
 
-    void deleteAllInBatch();
+	void deleteAllInBatch();
 
-    Optional<T> findById(P id);
+	Optional<T> findById(P id);
 
-    List<T> findByIdIn(Iterable<Integer> ids);
+	List<T> findByIdIn(Iterable<Integer> ids);
 
-    Set<T> findByIdIn(Set<Long> set);
+	Set<T> findByIdIn(Set<Long> set);
 
-    T getOne(P id);
+	T getOne(P id);
 
-    boolean existsById(P id);
+	boolean existsById(P id);
 
-    List<T> findAll();
+	List<T> findAll();
 
-    List<T> findAllById(Iterable<P> ids);
+	List<T> findAllById(Iterable<P> ids);
 
-    List<T> findAll(Sort sort);
+	List<T> findAll(Sort sort);
 
-    Page<T> findAll(Pageable pageable);
+	Page<T> findAll(Pageable pageable);
 
-    Optional<T> findOne(@Nullable Specification<T> spec);
+	Optional<T> findOne(@Nullable Specification<T> spec);
 
-    List<T> findAll(@Nullable Specification<T> spec);
+	List<T> findAll(@Nullable Specification<T> spec);
 
-    Page<T> findAll(@Nullable Specification<T> spec, Pageable pageable);
+	Page<T> findAll(@Nullable Specification<T> spec, Pageable pageable);
 
-    List<T> findAll(@Nullable Specification<T> spec, Sort sort);
+	List<T> findAll(@Nullable Specification<T> spec, Sort sort);
 
-    <S extends T> Optional<S> findOne(Example<S> example);
+	<S extends T> Optional<S> findOne(Example<S> example);
 
-    <S extends T> long count(Example<S> example);
+	<S extends T> long count(Example<S> example);
 
-    <S extends T> boolean exists(Example<S> example);
+	<S extends T> boolean exists(Example<S> example);
 
-    <S extends T> List<S> findAll(Example<S> example);
+	<S extends T> List<S> findAll(Example<S> example);
 
-    <S extends T> List<S> findAll(Example<S> example, Sort sort);
+	<S extends T> List<S> findAll(Example<S> example, Sort sort);
 
-    <S extends T> Page<S> findAll(Example<S> example, Pageable pageable);
+	<S extends T> Page<S> findAll(Example<S> example, Pageable pageable);
 
-    int countEntities();
+	int countEntities();
 
-    long count(@Nullable Specification<T> spec);
+	long count(@Nullable Specification<T> spec);
 
-    <S extends T> S save(S entity);
+	<S extends T> S save(S entity);
 
-    <S extends T> S saveAndFlush(S entity);
+	<S extends T> S saveAndFlush(S entity);
 
-    <S extends T> List<S> saveAll(Iterable<S> entities);
+	<S extends T> List<S> saveAll(Iterable<S> entities);
 
-    void flush();
+	void flush();
 
-    T update(T entity);
-
-    T validate(T entity);
-
-    List<T> validateAll(Iterable<T> entities);
+	T update(T entity);
 
 }

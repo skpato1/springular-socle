@@ -47,7 +47,7 @@ public class SwaggerConfig {
 		authorizationScopeList.add(new springfox.documentation.service.AuthorizationScope("trust", "trust all"));
 		authorizationScopeList.add(new springfox.documentation.service.AuthorizationScope("write", "access all"));
 		List<GrantType> grantTypes = new ArrayList<>();
-		GrantType creGrant = new ResourceOwnerPasswordCredentialsGrant("/springular-framework/oauth/token");
+		GrantType creGrant = new ResourceOwnerPasswordCredentialsGrant("/oauth/token");
 		grantTypes.add(creGrant);
 		return new OAuth(SECURITY_SCHEMA_OAUTH2, authorizationScopeList, grantTypes);
 	}

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -107,7 +109,6 @@
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.8.12</version>
 		</dependency>
 
 		<dependency>
@@ -136,8 +137,8 @@
 
 		<dependency>
 			<groupId>org.javers</groupId>
-			<artifactId>javers-core</artifactId>
-			<version>3.8.0</version>
+			<artifactId>javers-spring-boot-starter-sql</artifactId>
+			<version>5.3.6</version>
 		</dependency>
 	</dependencies>
 
@@ -148,7 +149,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.7.2</version>
 				<configuration>
 					<forkMode>always</forkMode>
 				</configuration>
@@ -156,7 +156,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.sonarsource.scanner.maven</groupId>
@@ -185,7 +184,6 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.6</version>
 				<inherited>false</inherited>
 				<executions>
 					<execution>
@@ -206,7 +204,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.3</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -221,7 +218,6 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-site-plugin</artifactId>
-				<version>3.5.1</version>
 				<configuration>
 					<skip>true</skip>
 				</configuration>
@@ -261,7 +257,6 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.8</version>
 				<executions>
 					<execution>
 						<id>copy</id>
@@ -269,7 +264,8 @@
 						<configuration>
 							<skip>${antrun.check.skip}</skip>
 							<tasks>
-								<copy file="/${main.basedir}/pre-commit" todir="/${main.basedir}/.git/hooks" overwrite="true" />
+								<copy file="/${main.basedir}/pre-commit"
+									todir="/${main.basedir}/.git/hooks" overwrite="true" />
 							</tasks>
 						</configuration>
 						<goals>

@@ -55,221 +55,232 @@ import io.swagger.annotations.ApiParam;
 @CrossOrigin("*")
 @Api(value = "user api", tags = "user-api")
 @RequestMapping(value = "/api/")
-public class UserApi implements IUserApi {
+public class UserApi implements IUserApi  {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserApi.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserApi.class);
 
-    @Autowired
-    private IUserService userService;
+	@Autowired
+	private IUserService userService;
 
-    @Autowired
-    private IRoleService roleService;
+	@Autowired
+	private IRoleService roleService;
 
-    private HttpErrorResponse httpErrorResponse = new HttpErrorResponse();
+	private HttpErrorResponse httpErrorResponse = new HttpErrorResponse();
 
-    private Object httpResponseBody;
+	private Object httpResponseBody;
 
-    private HttpStatus httpStatus;
+	private HttpStatus httpStatus;
 
-    @Autowired
-    private ConfiguredModelMapper modelMapper;
+	@Autowired
+	private ConfiguredModelMapper modelMapper;
 
-    @Autowired
-    private UserMapper userMapper;
+	@Autowired
+	private UserMapper userMapper;
 
-    @Autowired
-    private UserValidator userValidator;
+	@Autowired
+	private UserValidator userValidator;
 
-    @Override
-    public ResponseEntity<Object> saveUser(
-            @ApiParam(required = true, value = "user", name = "user") @RequestBody @Validated(value = { IWebServicesValidators.class }) CreateUserDto userDto,
-            BindingResult bindingResult) {
-        LOGGER.info("Web service saveUser invoked with userDto {}", userDto);
-        try {
-            userValidator.createUserValidator(userDto, bindingResult);
-            User savedUser = userService.save(userMapper.mapCreateUser(userDto));
-            httpStatus = HttpStatus.OK;
-            httpResponseBody = modelMapper.map(savedUser, ViewUserDto.class);
-        } catch (CustomException e) {
-            httpResponseBody = new HttpErrorResponse(HttpCostumCode.BAD_REQUEST.getValue(), e.getMessage());
-            httpStatus = HttpStatus.BAD_REQUEST;
-        }
+	@Override
+	public ResponseEntity<Object> saveUser(
+			@ApiParam(required = true, value = "user", name = "user") @RequestBody @Validated(value = {
+					IWebServicesValidators.class }) CreateUserDto userDto,
+			BindingResult bindingResult) {
+		LOGGER.info("Web service saveUser invoked with userDto {}", userDto);
+		try {
+			userValidator.createUserValidator(userDto, bindingResult);
+			User savedUser = userService.save(userMapper.mapCreateUser(userDto));
+			httpStatus = HttpStatus.OK;
+			httpResponseBody = modelMapper.map(savedUser, ViewUserDto.class);
+		} catch (CustomException e) {
+			httpResponseBody = new HttpErrorResponse(HttpCostumCode.BAD_REQUEST.getValue(), e.getMessage());
+			httpStatus = HttpStatus.BAD_REQUEST;
+		}
 
-        return new ResponseEntity<>(httpResponseBody, httpStatus);
-    }
+		return new ResponseEntity<>(httpResponseBody, httpStatus);
+	}
 
-    @Override
-    public ResponseEntity<Object> getUser(@ApiParam(value = "Id of User that will be fetched", required = true) @PathVariable("id") int id) {
-        LOGGER.info("Web service getUser invoked with id {}", id);
+	@Override
+	public ResponseEntity<Object> getUser(
+			@ApiParam(value = "Id of User that will be fetched", required = true) @PathVariable("id") int id) {
+		LOGGER.info("Web service getUser invoked with id {}", id);
 
-        Optional<User> user = userService.findById(id);
-        if (user.isPresent()) {
-            httpStatus = HttpStatus.OK;
-            httpResponseBody = userMapper.mapUserToViewUserDto(user.get());
-        } else {
-            httpResponseBody = new HttpErrorResponse(HttpCostumCode.BAD_REQUEST.getValue(), ApiMessage.USER_NOT_FOUND);
-            httpStatus = HttpStatus.BAD_REQUEST;
-        }
-        return new ResponseEntity<>(httpResponseBody, httpStatus);
-    }
+		Optional<User> user = userService.findById(id);
+		if (user.isPresent()) {
+			httpStatus = HttpStatus.OK;
+			httpResponseBody = userMapper.mapUserToViewUserDto(user.get());
+		} else {
+			httpResponseBody = new HttpErrorResponse(HttpCostumCode.BAD_REQUEST.getValue(), ApiMessage.USER_NOT_FOUND);
+			httpStatus = HttpStatus.BAD_REQUEST;
+		}
+		return new ResponseEntity<>(httpResponseBody, httpStatus);
+	}
 
-    @Override
-    public ResponseEntity<Object> getAllUsers() {
-        List<User> users = userService.findAll();
-        httpStatus = HttpStatus.OK;
-        httpResponseBody = !users.isEmpty() ? users.stream().map(user -> modelMapper.map(user, ViewUserDto.class)).collect(Collectors.toList()) : Collections.emptyList();
-        return new ResponseEntity<>(httpResponseBody, httpStatus);
-    }
+	@Override
+	public ResponseEntity<Object> getAllUsers() {
+		List<User> users = userService.findAll();
+		httpStatus = HttpStatus.OK;
+		httpResponseBody = !users.isEmpty()
+				? users.stream().map(user -> modelMapper.map(user, ViewUserDto.class)).collect(Collectors.toList())
+				: Collections.emptyList();
+		return new ResponseEntity<>(httpResponseBody, httpStatus);
+	}
 
-    @Override
-    public ResponseEntity<Object> updateUser(
-            @ApiParam(required = true, value = "user", name = "user") @Validated(value = IWebServicesValidators.class) @RequestBody UserDto userDto,
-            @ApiParam(required = true, value = "id", name = "id") @PathVariable("id") int id, BindingResult bindingResult) {
-        if (!bindingResult.hasFieldErrors()) {
-            Optional<User> user = userService.findById(id);
-            if (user.isPresent()) {
-                User preUpdateUser = user.get();
-                forceUserLogout(preUpdateUser, userDto);
-                User updatedUser = userService.save(userMapper.mapUpdateUser(userDto, user, id));
-                httpStatus = HttpStatus.OK;
-                httpResponseBody = modelMapper.map(user, User.class);
-                LOGGER.info("INFO level message: User updated {}", updatedUser);
+	@Override
+	public ResponseEntity<Object> updateUser(
+			@ApiParam(required = true, value = "user", name = "user") @Validated(value = IWebServicesValidators.class) @RequestBody UserDto userDto,
+			@ApiParam(required = true, value = "id", name = "id") @PathVariable("id") int id,
+			BindingResult bindingResult) {
+		if (!bindingResult.hasFieldErrors()) {
+			Optional<User> user = userService.findById(id);
+			if (user.isPresent()) {
+				User preUpdateUser = user.get();
+				forceUserLogout(preUpdateUser, userDto);
+				User updatedUser = userService.save(userMapper.mapUpdateUser(userDto, user, id));
+				httpStatus = HttpStatus.OK;
+				httpResponseBody = modelMapper.map(user, User.class);
+				LOGGER.info("INFO level message: User updated {}", updatedUser);
 
-            } else {
-                httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.NOT_FOUND.getValue(), ApiMessage.USER_NOT_FOUND);
-                httpStatus = HttpStatus.NOT_FOUND;
-                httpResponseBody = httpErrorResponse;
-            }
-        } else {
-            httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.BAD_REQUEST.getValue(), IValidatorError.getValidatorErrors(bindingResult));
-            httpResponseBody = httpErrorResponse;
-            httpStatus = HttpStatus.BAD_REQUEST;
-        }
-        return new ResponseEntity<>(httpResponseBody, httpStatus);
-    }
+			} else {
+				httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.NOT_FOUND.getValue(), ApiMessage.USER_NOT_FOUND);
+				httpStatus = HttpStatus.NOT_FOUND;
+				httpResponseBody = httpErrorResponse;
+			}
+		} else {
+			httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.BAD_REQUEST.getValue(),
+					IValidatorError.getValidatorErrors(bindingResult));
+			httpResponseBody = httpErrorResponse;
+			httpStatus = HttpStatus.BAD_REQUEST;
+		}
+		return new ResponseEntity<>(httpResponseBody, httpStatus);
+	}
 
-    @Override
-    public ResponseEntity<?> delete(@ApiParam(required = true, value = "id", name = "id") @PathVariable("id") int id) {
-        Optional<User> preDeleteUser = userService.findById(id);
-        if (!preDeleteUser.isPresent()) {
-            httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.NOT_FOUND.getValue(), ApiMessage.USER_NOT_FOUND);
-            httpResponseBody = httpErrorResponse;
-            httpStatus = HttpStatus.NOT_FOUND;
-        } else {
-            if (!isSuperAdmin(preDeleteUser.get())) {
-                userService.delete(preDeleteUser.get());
-                httpResponseBody = new HttpMessageResponse("User deleted successfully");
-                httpStatus = HttpStatus.OK;
-                LOGGER.info("INFO level message: User with id = {} deleted ", id);
-            }
-        }
-        return new ResponseEntity<>(httpResponseBody, httpStatus);
-    }
+	@Override
+	public ResponseEntity<?> delete(@ApiParam(required = true, value = "id", name = "id") @PathVariable("id") int id) {
+		Optional<User> preDeleteUser = userService.findById(id);
+		if (!preDeleteUser.isPresent()) {
+			httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.NOT_FOUND.getValue(), ApiMessage.USER_NOT_FOUND);
+			httpResponseBody = httpErrorResponse;
+			httpStatus = HttpStatus.NOT_FOUND;
+		} else {
+			if (!isSuperAdmin(preDeleteUser.get())) {
+				userService.delete(preDeleteUser.get());
+				httpResponseBody = new HttpMessageResponse("User deleted successfully");
+				httpStatus = HttpStatus.OK;
+				LOGGER.info("INFO level message: User with id = {} deleted ", id);
+			}
+		}
+		return new ResponseEntity<>(httpResponseBody, httpStatus);
+	}
 
-    private boolean isSuperAdmin(User user) {
-        Set<Integer> userRolesId = user.getRoles().stream().map(Role::getId).collect(Collectors.toSet());
-        if (userRolesId.contains(1)) {
-            httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.BAD_REQUEST.getValue(), ApiMessage.USER_IS_SUPER_ADMIN);
-            httpResponseBody = httpErrorResponse;
-            httpStatus = HttpStatus.BAD_REQUEST;
-            return true;
-        }
-        return false;
-    }
+	private boolean isSuperAdmin(User user) {
+		Set<Integer> userRolesId = user.getRoles().stream().map(Role::getId).collect(Collectors.toSet());
+		if (userRolesId.contains(1)) {
+			httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.BAD_REQUEST.getValue(),
+					ApiMessage.USER_IS_SUPER_ADMIN);
+			httpResponseBody = httpErrorResponse;
+			httpStatus = HttpStatus.BAD_REQUEST;
+			return true;
+		}
+		return false;
+	}
 
-    @Override
-    public ResponseEntity<?> updatePassword(
-            @ApiParam(required = true, value = "Contains old,new passwords and username", name = "Password change") @Valid @RequestBody ChangePasswordDto changePasswordDto,
-            BindingResult bindingResult) {
-        Optional<User> userToChangeHisPassword = userService.findById(changePasswordDto.getId());
-        if (userToChangeHisPassword.isPresent()) {
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            boolean passwordsMatch = encoder.matches(changePasswordDto.getOldPassword(), userToChangeHisPassword.get().getPassword());
-            if (passwordsMatch && !bindingResult.hasFieldErrors()) {
-                userToChangeHisPassword.get().setPassword(encoder.encode(changePasswordDto.getNewPassword()));
-                userService.save(userToChangeHisPassword.get());
-                userService.forceUserLogout(userToChangeHisPassword.get());
-                httpResponseBody = new HttpMessageResponse("Password Updated");
-                httpStatus = HttpStatus.ACCEPTED;
-            } else {
-                catchPasswordAndUsernameValidationMessage(!passwordsMatch, ApiMessage.WRONG_OLD_PASSWORD);
-                catchPasswordAndUsernameValidationMessage(bindingResult.hasFieldErrors(), IValidatorError.getValidatorErrors(bindingResult));
-            }
-        } else {
-            catchPasswordAndUsernameValidationMessage(!userToChangeHisPassword.isPresent(), ApiMessage.USER_NOT_FOUND);
-        }
+	@Override
+	public ResponseEntity<?> updatePassword(
+			@ApiParam(required = true, value = "Contains old,new passwords and username", name = "Password change") @Valid @RequestBody ChangePasswordDto changePasswordDto,
+			BindingResult bindingResult) {
+		Optional<User> userToChangeHisPassword = userService.findById(changePasswordDto.getId());
+		if (userToChangeHisPassword.isPresent()) {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			boolean passwordsMatch = encoder.matches(changePasswordDto.getOldPassword(),
+					userToChangeHisPassword.get().getPassword());
+			if (passwordsMatch && !bindingResult.hasFieldErrors()) {
+				userToChangeHisPassword.get().setPassword(encoder.encode(changePasswordDto.getNewPassword()));
+				userService.save(userToChangeHisPassword.get());
+				userService.forceUserLogout(userToChangeHisPassword.get());
+				httpResponseBody = new HttpMessageResponse("Password Updated");
+				httpStatus = HttpStatus.ACCEPTED;
+			} else {
+				catchPasswordAndUsernameValidationMessage(!passwordsMatch, ApiMessage.WRONG_OLD_PASSWORD);
+				catchPasswordAndUsernameValidationMessage(bindingResult.hasFieldErrors(),
+						IValidatorError.getValidatorErrors(bindingResult));
+			}
+		} else {
+			catchPasswordAndUsernameValidationMessage(!userToChangeHisPassword.isPresent(), ApiMessage.USER_NOT_FOUND);
+		}
 
-        return new ResponseEntity<>(httpResponseBody, httpStatus);
-    }
+		return new ResponseEntity<>(httpResponseBody, httpStatus);
+	}
 
-    @Override
-    public ResponseEntity<Object> getConnectedUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Optional<User> connectedUser = userService.findByLogin(authentication.getName());
-        if (connectedUser.isPresent()) {
-            httpResponseBody = new UserInfoDto(connectedUser.get());
-            httpStatus = HttpStatus.ACCEPTED;
-        } else {
-            httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.NOT_FOUND.getValue(), ApiMessage.USER_NOT_FOUND);
-            httpStatus = HttpStatus.NOT_FOUND;
-            httpResponseBody = httpErrorResponse;
-        }
-        return new ResponseEntity<>(httpResponseBody, httpStatus);
-    }
+	@Override
+	public ResponseEntity<Object> getConnectedUser() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Optional<User> connectedUser = userService.findByLogin(authentication.getName());
+		if (connectedUser.isPresent()) {
+			httpResponseBody = new UserInfoDto(connectedUser.get());
+			httpStatus = HttpStatus.ACCEPTED;
+		} else {
+			httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.NOT_FOUND.getValue(), ApiMessage.USER_NOT_FOUND);
+			httpStatus = HttpStatus.NOT_FOUND;
+			httpResponseBody = httpErrorResponse;
+		}
+		return new ResponseEntity<>(httpResponseBody, httpStatus);
+	}
 
-    private void catchPasswordAndUsernameValidationMessage(boolean passwordsMatch, String message) {
-        if (passwordsMatch) {
-            httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.BAD_REQUEST.getValue(), message);
-            httpResponseBody = httpErrorResponse;
-            httpStatus = HttpStatus.BAD_REQUEST;
-        }
-    }
+	private void catchPasswordAndUsernameValidationMessage(boolean passwordsMatch, String message) {
+		if (passwordsMatch) {
+			httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.BAD_REQUEST.getValue(), message);
+			httpResponseBody = httpErrorResponse;
+			httpStatus = HttpStatus.BAD_REQUEST;
+		}
+	}
 
-    @Override
-    public ResponseEntity<?> forceUpdatePassword(
-            @ApiParam(required = true, value = "Contains new passwords ", name = "Password change") @Valid @RequestBody ForceUpdatePassword forceUpdatePassword,
-            BindingResult bindingResult) {
-        Optional<User> userToChangeHisPassword = userService.findById(forceUpdatePassword.getId());
-        if (userToChangeHisPassword.isPresent()) {
-            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-            userToChangeHisPassword.get().setPassword(encoder.encode(forceUpdatePassword.getNewPassword()));
-            userService.save(userToChangeHisPassword.get());
-            userService.forceUserLogout(userToChangeHisPassword.get());
-            httpResponseBody = new HttpMessageResponse("Password Updated");
-            httpStatus = HttpStatus.ACCEPTED;
-        } else {
-            catchPasswordAndUsernameValidationMessage(!userToChangeHisPassword.isPresent(), ApiMessage.USER_NOT_FOUND);
-        }
+	@Override
+	public ResponseEntity<?> forceUpdatePassword(
+			@ApiParam(required = true, value = "Contains new passwords ", name = "Password change") @Valid @RequestBody ForceUpdatePassword forceUpdatePassword,
+			BindingResult bindingResult) {
+		Optional<User> userToChangeHisPassword = userService.findById(forceUpdatePassword.getId());
+		if (userToChangeHisPassword.isPresent()) {
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			userToChangeHisPassword.get().setPassword(encoder.encode(forceUpdatePassword.getNewPassword()));
+			userService.save(userToChangeHisPassword.get());
+			userService.forceUserLogout(userToChangeHisPassword.get());
+			httpResponseBody = new HttpMessageResponse("Password Updated");
+			httpStatus = HttpStatus.ACCEPTED;
+		} else {
+			catchPasswordAndUsernameValidationMessage(!userToChangeHisPassword.isPresent(), ApiMessage.USER_NOT_FOUND);
+		}
 
-        return new ResponseEntity<>(httpResponseBody, httpStatus);
-    }
+		return new ResponseEntity<>(httpResponseBody, httpStatus);
+	}
 
-    private void forceUserLogout(User preUpdateUser, UserDto userDto) {
-        Set<Integer> rolesId = preUpdateUser.getRoles().stream().map(role -> role.getId()).collect(Collectors.toSet());
-        if (!userDto.getRolesId().equals(rolesId)) {
-            roleService.forceUserLogout(preUpdateUser);
-        }
-    }
+	private void forceUserLogout(User preUpdateUser, UserDto userDto) {
+		Set<Integer> rolesId = preUpdateUser.getRoles().stream().map(role -> role.getId()).collect(Collectors.toSet());
+		if (!userDto.getRolesId().equals(rolesId)) {
+			roleService.forceUserLogout(preUpdateUser);
+		}
+	}
 
-    @Override
-    public ResponseEntity<Object> comparePasswords(@RequestBody String password) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Optional<User> connectedUser = userService.findByLogin(authentication.getName());
-        if (connectedUser.isPresent()) {
-            if (connectedUser.get().getPassword().equals(BCrypt.hashpw(password, connectedUser.get().getPassword()))) {
-                httpResponseBody = new UserPasswordDto(connectedUser.get().getPassword(), connectedUser.get().getLogin());
-                httpStatus = HttpStatus.ACCEPTED;
-            } else {
-                httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.BAD_REQUEST.getValue(), ApiMessage.PASSWORDS_ARE_NOT_MATCHING);
-                httpStatus = HttpStatus.BAD_REQUEST;
-                httpResponseBody = httpErrorResponse;
-            }
-        } else {
-            httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.NOT_FOUND.getValue(), ApiMessage.USER_NOT_FOUND);
-            httpStatus = HttpStatus.NOT_FOUND;
-            httpResponseBody = httpErrorResponse;
-        }
-        return new ResponseEntity<>(httpResponseBody, httpStatus);
-    }
+	@Override
+	public ResponseEntity<Object> comparePasswords(@RequestBody String password) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		Optional<User> connectedUser = userService.findByLogin(authentication.getName());
+		if (connectedUser.isPresent()) {
+			if (connectedUser.get().getPassword().equals(BCrypt.hashpw(password, connectedUser.get().getPassword()))) {
+				httpResponseBody = new UserPasswordDto(connectedUser.get().getPassword(),
+						connectedUser.get().getLogin());
+				httpStatus = HttpStatus.ACCEPTED;
+			} else {
+				httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.BAD_REQUEST.getValue(),
+						ApiMessage.PASSWORDS_ARE_NOT_MATCHING);
+				httpStatus = HttpStatus.BAD_REQUEST;
+				httpResponseBody = httpErrorResponse;
+			}
+		} else {
+			httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.NOT_FOUND.getValue(), ApiMessage.USER_NOT_FOUND);
+			httpStatus = HttpStatus.NOT_FOUND;
+			httpResponseBody = httpErrorResponse;
+		}
+		return new ResponseEntity<>(httpResponseBody, httpStatus);
+	}
 
 }

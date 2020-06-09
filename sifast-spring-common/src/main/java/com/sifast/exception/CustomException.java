@@ -4,7 +4,12 @@ import com.sifast.common.ApiMessage;
 
 public class CustomException extends Exception {
 
-    public CustomException(String message) {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public CustomException(String message) {
         super(message);
     }
 
