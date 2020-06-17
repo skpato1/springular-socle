@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import com.sifast.dto.authority.AuthorityDto;
 import com.sifast.dto.authority.ViewAuthorityDto;
 import com.sifast.model.Authority;
-import com.sifast.web.config.ConfiguredModelMapper;
+import com.sifast.service.config.ConfiguredModelMapper;
 
 @Component
 public class AuthorityMapper {

@@ -14,7 +14,7 @@ import com.sifast.dto.user.ViewUserDto;
 import com.sifast.model.Role;
 import com.sifast.model.User;
 import com.sifast.service.IRoleService;
-import com.sifast.web.config.ConfiguredModelMapper;
+import com.sifast.service.config.ConfiguredModelMapper;
 
 @Component
 public class UserMapper {

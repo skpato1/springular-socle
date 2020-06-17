@@ -1,4 +1,4 @@
-package com.sifast.web.config;
+package com.sifast.service.config;
 
 import org.modelmapper.Conditions;
 import org.modelmapper.convention.MatchingStrategies;
