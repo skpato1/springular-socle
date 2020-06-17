@@ -44,8 +44,8 @@ import com.sifast.model.Role;
 import com.sifast.model.User;
 import com.sifast.service.IRoleService;
 import com.sifast.service.IUserService;
+import com.sifast.service.config.ConfiguredModelMapper;
 import com.sifast.validator.UserValidator;
-import com.sifast.web.config.ConfiguredModelMapper;
 import com.sifast.web.service.api.IUserApi;
 
 import io.swagger.annotations.Api;

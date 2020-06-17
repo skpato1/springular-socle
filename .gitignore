@@ -18,12 +18,17 @@ springular-framework.log*
 .springBeans
 .sts4-cache
 .task_runner_caches/**
+*.DS_Store
+.DS_Store
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
+*.DS_Store
+.DS_Store
+
 
 ### NetBeans ###
 /nbproject/private/

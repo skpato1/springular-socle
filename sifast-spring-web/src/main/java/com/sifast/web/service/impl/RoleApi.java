@@ -35,7 +35,7 @@ import com.sifast.model.Authority;
 import com.sifast.model.Role;
 import com.sifast.service.IAuthorityService;
 import com.sifast.service.IRoleService;
-import com.sifast.web.config.ConfiguredModelMapper;
+import com.sifast.service.config.ConfiguredModelMapper;
 import com.sifast.web.service.api.IRoleApi;
 
 import io.swagger.annotations.Api;
