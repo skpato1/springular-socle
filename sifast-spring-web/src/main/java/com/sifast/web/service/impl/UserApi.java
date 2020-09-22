@@ -155,7 +155,7 @@ public class UserApi implements IUserApi  {
 	}
 
 	@Override
-	public ResponseEntity<?> delete(@ApiParam(required = true, value = "id", name = "id") @PathVariable("id") int id) {
+	public ResponseEntity<Object> delete(@ApiParam(required = true, value = "id", name = "id") @PathVariable("id") int id) {
 		Optional<User> preDeleteUser = userService.findById(id);
 		if (!preDeleteUser.isPresent()) {
 			httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.NOT_FOUND.getValue(), ApiMessage.USER_NOT_FOUND);
@@ -185,7 +185,7 @@ public class UserApi implements IUserApi  {
 	}
 
 	@Override
-	public ResponseEntity<?> updatePassword(
+	public ResponseEntity<Object> updatePassword(
 			@ApiParam(required = true, value = "Contains old,new passwords and username", name = "Password change") @Valid @RequestBody ChangePasswordDto changePasswordDto,
 			BindingResult bindingResult) {
 		Optional<User> userToChangeHisPassword = userService.findById(changePasswordDto.getId());
@@ -235,7 +235,7 @@ public class UserApi implements IUserApi  {
 	}
 
 	@Override
-	public ResponseEntity<?> forceUpdatePassword(
+	public ResponseEntity<Object> forceUpdatePassword(
 			@ApiParam(required = true, value = "Contains new passwords ", name = "Password change") @Valid @RequestBody ForceUpdatePassword forceUpdatePassword,
 			BindingResult bindingResult) {
 		Optional<User> userToChangeHisPassword = userService.findById(forceUpdatePassword.getId());

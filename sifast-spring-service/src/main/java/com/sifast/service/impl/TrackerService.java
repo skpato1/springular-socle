@@ -163,8 +163,8 @@ public class TrackerService {
         List<JaversCompareResultDto> cleanChangedPropreties = ITrackerUtil.getOnlyChangedProperties(diffBtwOldAndNewObjectForProprites);
         String changedObjectDto = new Gson().toJson(cleanChangedPropreties);
         genericTrack.setChangedProperties(changedObjectDto);
-        String cleanChangedValues = diffBtwOldAndNewObjectForProprites.toString().replaceAll("Diff:", "").replaceAll("ValueChange", "").replaceAll("globalId.*?[,]", "")
-                .replace("globalId:", "").replaceAll("oldVal", "oldValue").replaceAll("newVal", "newValue").replaceAll("ListChange", "").replaceAll("containerChanges", "");
+        String cleanChangedValues = diffBtwOldAndNewObjectForProprites.toString().replace("Diff:", "").replace("ValueChange", "").replace("globalId.*?[,]", "")
+                .replace("globalId:", "").replace("oldVal", "oldValue").replace("newVal", "newValue").replace("ListChange", "").replace("containerChanges", "");
         genericTrack.setChangedProperties(changedObjectDto);
         genericTrack.setAllChangedValues(cleanChangedValues);
         genericTrack.setEventDate(LocalDateTime.now());

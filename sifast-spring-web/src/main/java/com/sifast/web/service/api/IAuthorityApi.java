@@ -1,8 +1,7 @@
 package com.sifast.web.service.api;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.sifast.common.ApiMessage;
 import com.sifast.common.constants.ApiStatus;
@@ -23,6 +22,6 @@ public interface IAuthorityApi {
 	@ApiOperation(value = "find all authorities", response = ViewAuthorityDto.class, authorizations = {
 			@Authorization(value = ApiMessage.OAUTH2SCHEMA, scopes = {
 					@AuthorizationScope(scope = "read", description = "") }) })
-	@RequestMapping(value = "/authorities", method = RequestMethod.GET)
+	@GetMapping(value = "/authorities")
 	ResponseEntity<Object> getAllAuthorities();
 }
