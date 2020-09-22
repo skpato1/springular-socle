@@ -3,15 +3,17 @@ package com.sifast.web.service.api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.sifast.common.ApiMessage;
 import com.sifast.common.constants.ApiStatus;
 import com.sifast.common.utils.HttpErrorResponse;
 import com.sifast.common.utils.HttpMessageResponse;
-import com.sifast.dto.Role.RoleDto;
-import com.sifast.dto.Role.ViewRoleDto;
+import com.sifast.dto.role.RoleDto;
+import com.sifast.dto.role.ViewRoleDto;
 import com.sifast.dto.user.ViewUserDto;
 
 import io.swagger.annotations.ApiOperation;
@@ -26,7 +28,7 @@ public interface IRoleApi {
             @ApiResponse(code = ApiStatus.STATUS_BAD_REQUEST, message = ApiMessage.INVALID_INPUT, response = HttpErrorResponse.class) })
     @ApiOperation(value = "Add a new role", response = ViewUserDto.class, authorizations = {
             @Authorization(value = ApiMessage.OAUTH2SCHEMA, scopes = { @AuthorizationScope(scope = "read", description = "") }) })
-    @RequestMapping(value = "/role", method = RequestMethod.POST)
+    @PostMapping(value = "/role")
     @PreAuthorize(value = "hasAuthority('AUTH_CREATE_ROLE')")
     ResponseEntity<Object> saveRole(RoleDto roleDto, BindingResult bindingResult);
 
@@ -34,7 +36,7 @@ public interface IRoleApi {
             @ApiResponse(code = ApiStatus.STATUS_BAD_REQUEST, message = ApiMessage.INVALID_INPUT, response = HttpErrorResponse.class) })
     @ApiOperation(value = "find role by id", response = ViewRoleDto.class, authorizations = {
             @Authorization(value = ApiMessage.OAUTH2SCHEMA, scopes = { @AuthorizationScope(scope = "read", description = "") }) })
-    @RequestMapping(value = "/role/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/role/{id}")
     @PreAuthorize(value = "hasAuthority('AUTH_VIEW_ROLE')")
     ResponseEntity<Object> getRole(int id);
 
@@ -42,7 +44,7 @@ public interface IRoleApi {
             @ApiResponse(code = ApiStatus.STATUS_BAD_REQUEST, message = ApiMessage.INVALID_INPUT, response = HttpErrorResponse.class) })
     @ApiOperation(value = "find all role", response = ViewRoleDto.class, authorizations = {
             @Authorization(value = ApiMessage.OAUTH2SCHEMA, scopes = { @AuthorizationScope(scope = "read", description = "") }) })
-    @RequestMapping(value = "/roles", method = RequestMethod.GET)
+    @GetMapping(value = "/roles")
     @PreAuthorize(value = "hasAuthority('AUTH_VIEW_ROLE')")
     ResponseEntity<Object> getAllRoles();
 
@@ -50,7 +52,7 @@ public interface IRoleApi {
             @ApiResponse(code = ApiStatus.STATUS_BAD_REQUEST, message = ApiMessage.INVALID_INPUT, response = HttpErrorResponse.class) })
     @ApiOperation(value = "Update role", response = ViewRoleDto.class, authorizations = {
             @Authorization(value = ApiMessage.OAUTH2SCHEMA, scopes = { @AuthorizationScope(scope = "read", description = "") }) })
-    @RequestMapping(value = "/role/{id}", method = RequestMethod.PUT)
+    @PutMapping(value = "/role/{id}")
     @PreAuthorize(value = "hasAuthority('AUTH_UPDATE_ROLE')")
     ResponseEntity<Object> updateRole(RoleDto roleDto, int id, BindingResult bindingResult);
 
@@ -58,7 +60,7 @@ public interface IRoleApi {
             @ApiResponse(code = ApiStatus.STATUS_BAD_REQUEST, message = ApiMessage.INVALID_INPUT, response = HttpErrorResponse.class) })
     @ApiOperation(value = "Delete role", response = HttpMessageResponse.class, authorizations = {
             @Authorization(value = ApiMessage.OAUTH2SCHEMA, scopes = { @AuthorizationScope(scope = "read", description = "") }) })
-    @RequestMapping(value = "/role/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/role/{id}")
     @PreAuthorize(value = "hasAuthority('AUTH_DELETE_ROLE')")
-    ResponseEntity<?> delete(int id);
+    ResponseEntity<Object> delete(int id);
 }

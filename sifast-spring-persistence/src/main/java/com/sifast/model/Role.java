@@ -127,10 +127,7 @@ public class Role extends TimestampEntity {
         } else if (!designation.equals(other.designation)) {
             return false;
         }
-        if (id != other.id) {
-            return false;
-        }
-        return true;
+        return id == other.id;
     }
 
     @Override

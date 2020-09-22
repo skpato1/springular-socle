@@ -1,4 +1,4 @@
-package com.sifast.dto.Role;
+package com.sifast.dto.role;
 
 import java.util.Set;
 
