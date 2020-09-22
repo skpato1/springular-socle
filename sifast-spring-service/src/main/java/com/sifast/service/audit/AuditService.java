@@ -2,6 +2,7 @@ package com.sifast.service.audit;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -37,10 +38,7 @@ public class AuditService {
 	}
 
 	public <T> List<Change> getVersionsFinders(T entity) {
-
-		List<Change> changes = findVersions(entity);
-		return changes;
-
+		return findVersions(entity);
 	}
 
 	public <T> List<VersionDTO<T>> getVersionsWithoutRelationships(T currentVersion, Object id) {
@@ -121,11 +119,10 @@ public class AuditService {
 
 	public <T> List<Change> findVersions(T entity) {
 		QueryBuilder jqlQuery = QueryBuilder.byClass(entity.getClass()).withScopeDeepPlus(2).withChildValueObjects();
-		List<Change> shadows = javers.findChanges(jqlQuery.build());
-		return shadows;
+		return javers.findChanges(jqlQuery.build());
 	}
 
-	public <T> List<VersionsDiffDTO> compareTwoObjectsOftheSameType(Object a, Object b) {
+	public List<VersionsDiffDTO> compareTwoObjectsOftheSameType(Object a, Object b) {
 
 		List<Change> changes = javers.compare(a, b).getChanges();
 		return changes.parallelStream().map(change -> {
@@ -145,7 +142,7 @@ public class AuditService {
 			}
 
 			return diff;
-		}).filter(element -> element != null).collect(Collectors.toList());
+		}).filter(Objects::nonNull).collect(Collectors.toList());
 	}
 
 	public <T> List<VersionsDiffDTO> compare(Class<?> entity, Object id, int left, int right) {
@@ -170,7 +167,7 @@ public class AuditService {
 			}
 
 			return diff;
-		}).filter(element -> element != null).collect(Collectors.toList());
+		}).filter(Objects::nonNull).collect(Collectors.toList());
 	}
 
 }

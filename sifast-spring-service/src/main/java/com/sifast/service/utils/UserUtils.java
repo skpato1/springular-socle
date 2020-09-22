@@ -43,4 +43,8 @@ public class UserUtils {
         }
         return httpSession;
     }
+
+    private UserUtils(){
+
+    }
 }

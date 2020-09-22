@@ -28,8 +28,8 @@ import com.sifast.common.utils.HttpErrorResponse;
 import com.sifast.common.utils.HttpMessageResponse;
 import com.sifast.common.utils.IValidatorError;
 import com.sifast.common.utils.IWebServicesValidators;
-import com.sifast.dto.Role.RoleDto;
-import com.sifast.dto.Role.ViewRoleDto;
+import com.sifast.dto.role.RoleDto;
+import com.sifast.dto.role.ViewRoleDto;
 import com.sifast.dto.authority.AuthorityDto;
 import com.sifast.model.Authority;
 import com.sifast.model.Role;
@@ -156,7 +156,7 @@ public class RoleApi implements IRoleApi {
     }
 
     @Override
-    public ResponseEntity<?> delete(@ApiParam(required = true, value = "id", name = "id") @PathVariable("id") int id) {
+    public ResponseEntity<Object> delete(@ApiParam(required = true, value = "id", name = "id") @PathVariable("id") int id) {
         Optional<Role> preDeleteRole = roleService.findById(id);
         if (!preDeleteRole.isPresent()) {
             httpErrorResponse.setHttpCodeAndMessage(HttpCostumCode.NOT_FOUND.getValue(), "No role with the requested identifier, Check your entry please.");
