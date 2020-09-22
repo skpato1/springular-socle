@@ -1,4 +1,4 @@
-package com.sifast.cho.process.tracking.persistence;
+package com.sifast.persistence;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
