@@ -182,25 +182,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<inherited>false</inherited>
-				<executions>
-					<execution>
-						<id>infrastructure to zip</id>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<phase>package</phase>
-						<configuration>
-							<descriptors>
-								<descriptor>descriptor-assembly-infrastructure-to-zip.xml</descriptor>
-								<descriptor>descriptor-assembly-project-to-zip.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
