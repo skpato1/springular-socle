@@ -16,4 +16,9 @@ Avant de pouvoir déployer cette application sur votre machine vous devez avoir 
 
 	> mvnw spring-boot:run
  4. Pour tester le fonctionnement de l'application visitez : [swagger-ui.html](http://localhost:9090/springular-framework/swagger-ui.html#/)
- 
+
+### Authentification 
+* Login : admin
+* Password: admin00
+* Client: client
+* Secret: password
